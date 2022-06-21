@@ -2,6 +2,7 @@ import { nanoid } from "nanoid";
 import { useState } from "react";
 import image2 from "../../asset/image2.png";
 import Alert from "../Alert";
+import Button from "../UI/Button";
 import FormStyled from "./Form.styled";
 
 function CovidForm(props) {
@@ -127,9 +128,10 @@ function CovidForm(props) {
               />
               {isJumlahError && <Alert>The Jumlah is Required</Alert>}
             </div>
-            <div>
-              <button>Submit</button>
-            </div>
+            <div>{/* <button>Submit</button> */}</div>
+            <Button variant="secondary" full>
+              submit
+            </Button>
           </form>
         </div>
       </section>

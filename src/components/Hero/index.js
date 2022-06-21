@@ -1,3 +1,4 @@
+import Button from "../UI/Button";
 import image1 from "./../../asset/image1.png";
 import HeroStyled from "./Hero.styled";
 function Hero() {
@@ -12,7 +13,9 @@ function Hero() {
             cum accusamus quisquam earum velit ea nobis maiores exercitationem
             nam temporibus.
           </p>
-          <button>Vaccine</button>
+          {/* <button>Vaccine</button>
+           */}
+          <Button>Vaccine</Button>
         </div>
         <div className="hero__right">
           <img src={image1} alt="" />

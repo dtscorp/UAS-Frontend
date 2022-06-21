@@ -48,7 +48,7 @@ const FormStyled = styled.div`
     border: 1px solid #06d6a0;
   }
 
-  button {
+  /* button {
     padding: 0.8rem 2rem;
     border: none;
     border-radius: 10px;
@@ -57,7 +57,7 @@ const FormStyled = styled.div`
     display: block;
     margin: 0 auto;
     width: 100%;
-  }
+  } */
   .form__alert {
     max-width: 100%;
     height: auto;
