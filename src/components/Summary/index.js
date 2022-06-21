@@ -1,14 +1,15 @@
 // import image2 from "../../asset/image2.png";
 import SummaryStyled from "./Summary.styled";
 
-function Summary() {
+function Summary(props) {
+  const { img, title } = props;
   return (
     <SummaryStyled>
       <section>
         <h2>Summary</h2>
-        <p>Data Covid Berdasarkan Provinsi</p>
+        <p>Summary Data {title}</p>
         <div className="Summary">
-          <img src={"https://covid19.mathdro.id/api/og"} alt="" />
+          <img src={img} alt="" />
         </div>
       </section>
     </SummaryStyled>

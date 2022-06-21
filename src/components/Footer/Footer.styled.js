@@ -11,9 +11,10 @@ const FooterStyled = styled.div`
   }
 
   h2 {
-    font-size: 2.4rem;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    /* margin-bottom: 1rem; */
     margin-right: 15px;
+    font-weight: 500;
   }
   p {
     margin-bottom: 1rem;

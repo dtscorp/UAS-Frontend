@@ -2,15 +2,15 @@ import Card from "../Cards";
 import data from "../../utils/constants/indonesia.js";
 import { nanoid } from "nanoid";
 import GlobalStyled from "./Global.styled";
-function Global() {
-  const globals = data.indonesia;
-
+function Global(props) {
+  const globals = props.globals;
+  // const globals = data.indonesia;
   return (
     <GlobalStyled>
       <div className="container">
         <section className="globals">
-          <h2>Indonesia</h2>
-          <p>Data Covid Berdasarkan Global</p>
+          <h2>{props.title}</h2>
+          <p>Data Covid Berdasarkan {props.title}</p>
           <div className="global__container">
             {globals.map(function (global) {
               let id = nanoid();

@@ -6,8 +6,11 @@ function Indonesia() {
   return (
     <>
       <Hero />
-      <Global />
-      <Summary />
+      <Global title="Indonesia" />
+      <Summary
+        title="Indonesia"
+        img="https://covid19.mathdro.id/api/countries/indonesia/og"
+      />
     </>
   );
 }
