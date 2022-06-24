@@ -9,9 +9,11 @@ import Summary from "../components/Summary";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ENDPOINT from "../utils/constants/endpoint";
+import { useDispatch } from "react-redux";
+import { updateCovidCase } from "../features/CovidSlice";
 
 function Home() {
-  const [kasus, Setkasus] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(async () => {
     getKasusGlobals();
@@ -32,12 +34,13 @@ function Home() {
         ...response.data.deaths,
       },
     ];
-    Setkasus(setKasusCovid);
+    // Setkasus(setKasusCovid);
+    dispatch(updateCovidCase(setKasusCovid));
   }
   return (
     <>
       <Hero />
-      <Global title="Global" globals={kasus} />
+      <Global title="Global" />
       <Summary title="Global" img="https://covid19.mathdro.id/api/og" />
     </>
   );

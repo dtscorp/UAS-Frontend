@@ -1,4 +1,6 @@
+import Hero from "../components/Hero";
+
 function About() {
-  return <h1>Assalamualaikum</h1>;
+  return <Hero />;
 }
 export default About;

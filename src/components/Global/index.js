@@ -1,9 +1,10 @@
 import Card from "../Cards";
-import data from "../../utils/constants/indonesia.js";
+import { useSelector } from "react-redux";
 import { nanoid } from "nanoid";
 import GlobalStyled from "./Global.styled";
 function Global(props) {
-  const globals = props.globals;
+  // const globals = props.globals;
+  const globals = useSelector((store) => store.covidReducer.covidCase);
   // const globals = data.indonesia;
   return (
     <GlobalStyled>

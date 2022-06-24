@@ -1,7 +1,9 @@
 import { nanoid } from "nanoid";
 import ProvinceStyled from "./Province.styled";
-function Province(props) {
-  const { provincesData } = props;
+import { useSelector } from "react-redux";
+function Province() {
+  // const { provincesData } = props;
+  const provincesData = useSelector((store) => store.covidReducer.provinsi);
   let no = 1;
   return (
     <ProvinceStyled>
