@@ -1,4 +1,5 @@
 import MenuStyled from "./Menu.styled";
+import { Link } from "react-router-dom";
 
 function Menu(props) {
   const { isShow } = props;
@@ -6,10 +7,18 @@ function Menu(props) {
     <MenuStyled>
       <div className={!isShow ? "hide" : "false"}>
         <ul>
-          <li>Global</li>
-          <li>Indonesia</li>
-          <li>Provinsi</li>
-          <li>About</li>
+          <li>
+            <Link to="/">Global</Link>
+          </li>
+          <li>
+            <Link to="/covid/indonesia">Indonesia</Link>
+          </li>
+          <li>
+            <Link to="/covid/provinsi">Provinsi</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
         </ul>
       </div>
     </MenuStyled>

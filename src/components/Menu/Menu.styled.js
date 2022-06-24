@@ -10,6 +10,10 @@ const MenuStyled = styled.div`
   li {
     margin-bottom: 1rem;
   }
+  a {
+    color: white;
+    text-decoration: none;
+  }
 
   @media (max-width: 756px) {
     .hide {

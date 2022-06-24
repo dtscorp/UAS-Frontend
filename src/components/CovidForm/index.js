@@ -1,11 +1,16 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import image2 from "../../asset/image2.png";
+import { updateCovidProvinsi } from "../../features/CovidSlice";
 import Alert from "../Alert";
+import Button from "../UI/Button";
 import FormStyled from "./Form.styled";
 
-function CovidForm(props) {
-  const { provincesData, setProvinceData } = props;
+function CovidForm() {
+  const dispatch = useDispatch();
+  // const { provincesData } = props;
+  const provincesData = useSelector((store) => store.covidReducer.provinsi);
   const [province, setProvince] = useState(provincesData[0].kota);
   const [status, setStatus] = useState("positif");
   const [jumlah, setJumlah] = useState(0);
@@ -31,28 +36,29 @@ function CovidForm(props) {
     const findProvince = provincesData.find(function (item) {
       return item.kota === province;
     });
+    const provinsiData = [...provincesData];
     if (status === "positif") {
-      provincesData[index] = {
+      provinsiData[index] = {
         ...findProvince,
         kasus: parseInt(findProvince.kasus) + parseInt(jumlah),
       };
     } else if (status === "sembuh") {
-      provincesData[index] = {
+      provinsiData[index] = {
         ...findProvince,
         sembuh: parseInt(findProvince.sembuh) + parseInt(jumlah),
       };
     } else if (status === "dirawat") {
-      provincesData[index] = {
+      provinsiData[index] = {
         ...findProvince,
         dirawat: parseInt(findProvince.dirawat) + parseInt(jumlah),
       };
     } else {
-      provincesData[index] = {
+      provinsiData[index] = {
         ...findProvince,
         meninggal: parseInt(findProvince.meninggal) + parseInt(jumlah),
       };
     }
-    setProvinceData([...provincesData]);
+    dispatch(updateCovidProvinsi(provinsiData));
   }
   function handleSubmit(e) {
     e.preventDefault();
@@ -127,9 +133,10 @@ function CovidForm(props) {
               />
               {isJumlahError && <Alert>The Jumlah is Required</Alert>}
             </div>
-            <div>
-              <button>Submit</button>
-            </div>
+            <div>{/* <button>Submit</button> */}</div>
+            <Button variant="secondary" full>
+              submit
+            </Button>
           </form>
         </div>
       </section>

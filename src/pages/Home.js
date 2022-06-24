@@ -1,38 +1,47 @@
-import Footer from "../components/Footer";
-// import Hello from "../components/Hello";
-import Navbar from "../components/Navbar";
+/* eslint-disable react-hooks/exhaustive-deps */
+// import Footer from "../components/Footer";
+// // import Hello from "../components/Hello";
+// import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Global from "../components/Global";
-import data from "../utils/constants/provinces";
-import { useState } from "react";
+// import data from "../utils/constants/provinces";
 import Summary from "../components/Summary";
-
-function Main() {
-  const [provincesData, setProvinceData] = useState(data.provinces);
-
-  return (
-    <main>
-      <Hero />
-      <Global />
-      {/* <Province
-        provincesData={provincesData}
-        setProvinceData={setProvinceData}
-      /> */}
-      {/* <CovidForm
-        provincesData={provincesData}
-        setProvinceData={setProvinceData}
-      /> */}
-      <Summary />
-    </main>
-  );
-}
+import { useEffect, useState } from "react";
+import axios from "axios";
+import ENDPOINT from "../utils/constants/endpoint";
+import { useDispatch } from "react-redux";
+import { updateCovidCase } from "../features/CovidSlice";
 
 function Home() {
+  const dispatch = useDispatch();
+
+  useEffect(async () => {
+    getKasusGlobals();
+  }, []);
+  async function getKasusGlobals() {
+    const response = await axios(ENDPOINT.GLOBAL);
+    const setKasusCovid = [
+      {
+        status: "Confirmed",
+        ...response.data.confirmed,
+      },
+      {
+        status: "Recovered",
+        ...response.data.recovered,
+      },
+      {
+        status: "Deaths",
+        ...response.data.deaths,
+      },
+    ];
+    // Setkasus(setKasusCovid);
+    dispatch(updateCovidCase(setKasusCovid));
+  }
   return (
     <>
-      <Navbar />
-      <Main />
-      <Footer />
+      <Hero />
+      <Global title="Global" />
+      <Summary title="Global" img="https://covid19.mathdro.id/api/og" />
     </>
   );
 }

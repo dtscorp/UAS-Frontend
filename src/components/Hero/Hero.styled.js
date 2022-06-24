@@ -25,13 +25,6 @@ const HeroStyled = styled.div`
     color: #06d6a0;
     margin-bottom: 1rem;
   }
-  button {
-    padding: 0.8rem 2rem;
-    border: none;
-    border-radius: 10px;
-    background-color: #073b4c;
-    color: #fff;
-  }
   img {
     width: 536px;
     max-width: 100%;
