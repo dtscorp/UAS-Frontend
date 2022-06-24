@@ -11,20 +11,33 @@ import axios from "axios";
 import ENDPOINT from "../utils/constants/endpoint";
 
 function Home() {
-  const [Case, setCase] = useState([]);
+  const [kasus, Setkasus] = useState([]);
 
   useEffect(async () => {
-    getCaseGlobals();
+    getKasusGlobals();
   }, []);
-  async function getCaseGlobals() {
+  async function getKasusGlobals() {
     const response = await axios(ENDPOINT.GLOBAL);
-    // console.log(response.data);
-    setCase(response.data);
+    const setKasusCovid = [
+      {
+        status: "Confirmed",
+        ...response.data.confirmed,
+      },
+      {
+        status: "Recovered",
+        ...response.data.recovered,
+      },
+      {
+        status: "Deaths",
+        ...response.data.deaths,
+      },
+    ];
+    Setkasus(setKasusCovid);
   }
   return (
     <>
       <Hero />
-      <Global title="Global" globals={Case} />
+      <Global title="Global" globals={kasus} />
       <Summary title="Global" img="https://covid19.mathdro.id/api/og" />
     </>
   );
