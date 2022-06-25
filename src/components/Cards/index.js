@@ -7,7 +7,6 @@ function Card(props) {
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     return parts.join(".");
   }
-  console.log(global);
   return (
     <CardStyled>
       <div className="card">
