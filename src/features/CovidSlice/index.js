@@ -5,6 +5,7 @@ const covidSlice = createSlice({
   initialState: {
     provinsi: data.provinces,
     covidCase: [],
+    urlSummary: "",
   },
 
   reducers: {
@@ -14,11 +15,15 @@ const covidSlice = createSlice({
     updateCovidCase(state, action) {
       state.covidCase = action.payload;
     },
+    updateURLSummary(state, action) {
+      state.urlSummary = action.payload;
+    },
   },
 });
 
-const { updateCovidProvinsi, updateCovidCase } = covidSlice.actions;
+const { updateCovidProvinsi, updateCovidCase, updateURLSummary } =
+  covidSlice.actions;
 const covidReducer = covidSlice.reducer;
 
 export default covidReducer;
-export { updateCovidProvinsi, updateCovidCase };
+export { updateCovidProvinsi, updateCovidCase, updateURLSummary };
